@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.opensajux.services.impl" default="build-jar">
+
+	<property name="appengine.sdk.dir" location="C:\appEngineIDE\plugins\com.google.appengine.eclipse.sdkbundle_1.7.5\appengine-java-sdk-1.7.5" />
+	<import file="${appengine.sdk.dir}/config/user/ant-macros.xml" />
+
+	<path id="project.classpath">
+		<pathelement path="bin" />
+		<fileset dir="${appengine.sdk.dir}/lib">
+			<include name="shared/**/*.jar" />
+		</fileset>
+		<fileset dir="${appengine.sdk.dir}/lib/user">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="compile">
+		<mkdir dir="bin" />
+		<copy todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<javac srcdir="src" destdir="bin" classpathref="project.classpath" debug="on" />
+	</target>
+
+	<target name="build-jar" depends="compile">
+		<jar basedir="bin" destfile="dist\com.opensajux.services.impl.jar" />
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+</project>
