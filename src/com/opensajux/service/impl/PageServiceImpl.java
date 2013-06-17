@@ -103,6 +103,11 @@ public class PageServiceImpl implements PageService {
 		row.getColumns().add(col2);
 		layout.setRows(new ArrayList<LayoutRow>());
 		layout.getRows().add(row);
+		row = new LayoutRow();
+		col1 = new LayoutColumn();
+		row.setColumns(new ArrayList<LayoutColumn>());
+		row.getColumns().add(col1);
+		layout.getRows().add(row);
 		return layout;
 	}
 
